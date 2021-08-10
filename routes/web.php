@@ -11,6 +11,7 @@ use App\Http\Controllers\CompaniesController;
 use App\Http\Controllers\RegisterClientController;
 use App\Http\Controllers\UserProfileController;
 use App\Http\Controllers\PaymentsController;
+use App\Http\Controllers\DocumentsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,8 +46,14 @@ Route::get('/companies', [CompaniesController::class, 'index'])->name('companies
 Route::post('/companies', [CompaniesController::class, 'store']);
 Route::delete('/companies/{company}', [CompaniesController::class, 'destroy'])->name('companies.destroy');
 Route::get('companies/{company}', [CompaniesController::class, 'show'])->name('companies.company');
+Route::get('companies/edit/{id}', [CompaniesController::class, 'edit']);
+Route::post('/update', [CompaniesController::class, 'update']);
 
 Route::get('/profile', [UserProfileController::class, 'index'])->name('profile')->middleware('auth');
 
 Route::get('/payments', [PaymentsController::class, 'index'])->name('payments')->middleware('auth');
 Route::post('/payments', [PaymentsController::class, 'store']);
+
+Route::get('/document-repository', [DocumentsController::class, 'index'])->name('document-repository')->middleware('auth');
+Route::post('/document-repository', [DocumentsController::class, 'store']);
+Route::get('/download/{document}', [DocumentsController::class, 'download']);

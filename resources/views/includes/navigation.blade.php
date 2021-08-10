@@ -17,6 +17,9 @@
         <li>
             <i class="icon icon-payment" style="background-image: url({{ asset('img/payment.png') }})"></i> <a class="p-3" href="{{ route('payments') }}">Payments</a>
         </li>
+        <li>
+            <i class="icon icon-payment" style="background-image: url({{ asset('img/payment.png') }})"></i> <a class="p-3" href="{{ route('document-repository') }}">Document Repository</a>
+        </li>
     </ul>
 
     <ul class="items-center sec-nav w-full">

@@ -23,7 +23,7 @@
     </td>
     <td class="p-3 border border-red-800">
         <form action="">
-            <button class="btn btn-edit"><i class="icon icon-edit" style="background-image: url({{ asset('img/edit.png') }})"></i> Edit</button>
+            <a href="{{ url('companies/edit', $company->id) }}" class="btn btn-edit"><i class="icon icon-edit" style="background-image: url({{ asset('img/edit.png') }})"></i> Edit</a>
         </form>
     </td>
 </tr>

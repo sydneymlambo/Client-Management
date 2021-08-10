@@ -39,7 +39,7 @@ class CompaniesController extends Controller
             'company_registration_number' => 'required|max:255',
             'client_id' => 'required|max:255',
             'company_renewal' => 'required|max:255',
-            'initial_payment_balance' => 'required|11',
+            'initial_payment_balance' => 'required|max:11',
         ]);
 
         //Store
@@ -59,5 +59,35 @@ class CompaniesController extends Controller
         $company->delete();
 
         return back();
+    }
+
+    public function edit($id){
+        $company = Company::where('id', $id)->first();
+
+        return view('edit-company', [
+            'company' => $company,
+        ]);
+    }
+
+    public function update(Request $request) {
+        $this->validate($request, [
+            'id' => 'required|max:11',
+            'company_name' => 'required|max:255',
+            'company_reference' => 'required|max:255',
+            'company_registration_number' => 'required|max:255',
+            'client_id' => 'required|max:255',
+            'company_renewal' => 'required|max:255',
+            'initial_payment_balance' => 'required|max:11',
+        ]);
+        Company::where('id', $request->id)->update([
+            'company_name' => $request->company_name,
+            'company_reference' => $request->company_reference,
+            'company_registration_number' => $request->company_registration_number,
+            'client_id' => $request->client_id,
+            'company_renewal' => $request->company_renewal,
+            'initial_payment_balance' => $request->initial_payment_balance,
+        ]);
+
+        return redirect()->back();
     }
 }

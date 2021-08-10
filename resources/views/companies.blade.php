@@ -58,7 +58,7 @@
                 </div>
                 <div class="mb-4 w-6/12 px-2">
                     <label for="company_reference">Company Reference</label>
-                    <input type="text" name="company_reference" id="company_reference" class="bg-gray-100 border-2 w-full p-4 rounded-lg @error('company_reference') border-red-500 @enderror" value="{{ old('client_surname') }}" required>
+                    <input type="text" name="company_reference" id="company_reference" class="bg-gray-100 border-2 w-full p-4 rounded-lg @error('company_reference') border-red-500 @enderror" value="{{ old('company_reference') }}" required>
                     @error('company_reference')
                     <div class="text-red-500 text-sm mt-2">
                         {{ $message }}
@@ -91,6 +91,16 @@
                     <label for="company_renewal">Company Renewal (yyyymmdd)</label>
                     <input type="date" name="company_renewal" id="company_renewal" class="bg-gray-100 border-2 w-full p-4 rounded-lg @error('company_renewal') border-red-500 @enderror" value="{{ old('company_renewal') }}" required>
                     @error('company_renewal')
+                    <div class="text-red-500 text-sm mt-2">
+                        {{ $message }}
+                    </div>
+                    @enderror
+                </div>
+
+                <div class="mb-4 w-6/12 px-2">
+                    <label for="initial_payment_balance">Payment due</label>
+                    <input type="text" name="initial_payment_balance" id="initial_payment_balance" class="bg-gray-100 border-2 w-full p-4 rounded-lg @error('initial_payment_balance') border-red-500 @enderror" value="{{ old('initial_payment_balance') }}" required>
+                    @error('initial_payment_balance')
                     <div class="text-red-500 text-sm mt-2">
                         {{ $message }}
                     </div>
