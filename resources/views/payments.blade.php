@@ -9,24 +9,34 @@
             <div class="mb-5">
                 <a href="#register-client" class="modal-btn btn btn-primary"><i class="icon icon-edit" style="background-image: url({{ asset('img/plus.png') }});"></i> Capture payment</a>
             </div>
-            <table class="w-full">
-                <tr>
-                    <th class="p-3 border border-red-800">Invoice number</th>
-                    <th class="p-3 border border-red-800">Payment by</th>
-                    <th class="p-3 border border-red-800">Payment for</th>
-                    <th class="p-3 border border-red-800">Payment amount</th>
-                    <th class="p-3 border border-red-800">Payment date</th>
-                </tr>
-                @foreach($payments as $payment)
-                    <tr>
-                        <td class="p-3 border border-red-800">{{ $payment->invoice_number }}</td>
-                        <td class="p-3 border border-red-800">{{ $payment->companies->company_name }}</td>
-                        <td class="p-3 border border-red-800">{{ $payment->payment_for }}</td>
-                        <td class="p-3 border border-red-800">{{ $payment->payment_amount }}</td>
-                        <td class="p-3 border border-red-800">{{ $payment->payment_date }}</td>
+            <div class="rounded bg-primary-fade p-5">
+                <table class="w-full">
+                    <tr class="text-left">
+                        <th class="p-3 border border-red-800">Invoice number</th>
+                        <th class="p-3 border border-red-800">Payment by</th>
+                        <th class="p-3 border border-red-800">Payment for</th>
+                        <th class="p-3 border border-red-800">Payment amount</th>
+                        <th class="p-3 border border-red-800">Payment date</th>
+                        <th class="p-3 border border-red-800"> Actions</th>
                     </tr>
-                @endforeach
-            </table>
+                    @foreach($payments as $payment)
+                        <tr>
+                            <td class="p-3 border border-red-800">{{ $payment->invoice_number }}</td>
+                            <td class="p-3 border border-red-800">{{ $payment->companies->company_name }}</td>
+                            <td class="p-3 border border-red-800">{{ $payment->payment_for }}</td>
+                            <td class="p-3 border border-red-800">{{ $payment->payment_amount }}</td>
+                            <td class="p-3 border border-red-800">{{ $payment->payment_date }}</td>
+                            <td class="p-3 border border-red-800">
+                                <form action="{{ route('payments.destroy', $payment) }}" method="post">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-delete"> <i class="icon icon-delete" style="background-image: url({{ asset('img/bin.png') }})"></i> Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                    @endforeach
+                </table>
+            </div>
         </div>
     </div>
 

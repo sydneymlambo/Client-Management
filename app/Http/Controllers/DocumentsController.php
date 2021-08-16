@@ -18,6 +18,12 @@ class DocumentsController extends Controller
 
         $data = new document();
 
+        $this->validate($request, [
+            'file' => 'required',
+            'doc_name' => 'required|min:1',
+            'description' => 'required|min:1',
+        ]);
+
         $file = $request->file;
         $filename = time().'.'.$file->getClientOriginalExtension();
         $request->file->move('assets', $filename);

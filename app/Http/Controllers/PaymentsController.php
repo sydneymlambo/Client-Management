@@ -38,4 +38,10 @@ class PaymentsController extends Controller
 
         return redirect()->route('payments');
     }
+
+    public function destroy(Payment $payment) {
+        $payment->delete();
+
+        return back();
+    }
 }

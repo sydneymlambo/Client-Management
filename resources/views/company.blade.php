@@ -42,13 +42,14 @@
             <div class="w-full mb-5">
                 <h2>Payments</h2>
                 <table class="w-full bg-white">
-                    <tr>
+                    <tr class="text-left">
                         <th class="p-3 border border-red-800">Invoice number</th>
                         <th class="p-3 border border-red-800">Payment for</th>
                         <th class="p-3 border border-red-800">Payment amount</th>
                         <th class="p-3 border border-red-800">Payment date</th>
                         <th class="p-3 border border-red-800">Total amount paid</th>
                         <th class="p-3 border border-red-800">Total amount outstanding</th>
+                        <th class="p-3 border border-red-800">Action</th>
                     </tr>
                     @foreach($company->payments as $payment)
                         <?php
@@ -62,6 +63,13 @@
                             <td class="p-3 border border-red-800">{{ $payment->payment_date }}</td>
                             <td class="p-3 border border-red-800">{{ $paid_amount }}</td>
                             <td class="p-3 border border-red-800">{{ $init_amount }}</td>
+                            <td class="p-3 border border-red-800">
+                                <form action="{{ route('payments.destroy', $payment) }}" method="post">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-delete"> <i class="icon icon-delete" style="background-image: url({{ asset('img/bin.png') }})"></i> Delete</button>
+                                </form>
+                            </td>
                         </tr>
                     @endforeach
                 </table>

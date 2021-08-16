@@ -43,7 +43,7 @@
                                 <button type="submit" class="btn btn-delete"> <i class="icon icon-delete" style="background-image: url({{ asset('img/bin.png') }})"></i> Delete</button>
                             </form>
                         </div>
-                    @elseif($reminder->users->user_role > 1)
+                    @elseif($reminder->users->username === auth()->user()->username )
                         <div class="w-full bg-primary-fade p-5 rounded mb-3">
 
                             <p class="mb-3">
@@ -76,7 +76,7 @@
                 <div class="w-full bg-primary-fade p-5 rounded mb-3">
                     <h4 class="text-center">Companies in need of renewal</h4>
                     <table class="w-full">
-                        <tr>
+                        <tr class="text-left">
                             <th class="p-3 border border-red-800">Company Name</th>
                             <th class="p-3 border border-red-800">Days Left to renew</th>
                         </tr>
@@ -98,7 +98,7 @@
                 <div class="w-full bg-primary-fade p-5 rounded mb-3">
                     <h4 class="text-center">Companies with high initial balances</h4>
                     <table class="w-full">
-                        <tr>
+                        <tr class="text-left">
                             <th class="p-3 border border-red-800">Company Name</th>
                             <th class="p-3 border border-red-800">Initial balance</th>
                         </tr>

@@ -53,6 +53,7 @@ Route::get('/profile', [UserProfileController::class, 'index'])->name('profile')
 
 Route::get('/payments', [PaymentsController::class, 'index'])->name('payments')->middleware('auth');
 Route::post('/payments', [PaymentsController::class, 'store']);
+Route::delete('/payments/{payment}', [PaymentsController::class, 'destroy'])->name('payments.destroy');
 
 Route::get('/document-repository', [DocumentsController::class, 'index'])->name('document-repository')->middleware('auth');
 Route::post('/document-repository', [DocumentsController::class, 'store']);

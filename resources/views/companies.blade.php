@@ -9,15 +9,15 @@
             @if($companies->count())
                 <table class="table-auto w-full border border-red-800">
                     <thead>
-                    <tr class="border-bottom-1">
-                        <th>Company Name</th>
-                        <th>Company Owner</th>
-                        <th>Company Reference</th>
-                        <th>Company Registration Number</th>
-                        <th>Company Renewal</th>
-                        <th>Days left for Renewal</th>
-                        <th>Outstanding payment</th>
-                        <th colspan="2"> Actions</th>
+                    <tr class="border-bottom-1 text-left">
+                        <th class="p-3 border border-red-800">Company Name</th>
+                        <th class="p-3 border border-red-800">Company Owner</th>
+                        <th class="p-3 border border-red-800">Company Reference</th>
+                        <th class="p-3 border border-red-800">Company Registration Number</th>
+                        <th class="p-3 border border-red-800">Company Renewal</th>
+                        <th class="p-3 border border-red-800">Days left for Renewal</th>
+                        <th class="p-3 border border-red-800">Outstanding payment</th>
+                        <th class="p-3 border border-red-800" colspan="2"> Actions</th>
                     </tr>
                     </thead>
                     <tbody>

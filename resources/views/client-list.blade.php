@@ -7,32 +7,34 @@
                 <a href="#register-client" class="modal-btn btn btn-primary"><i class="icon icon-edit" style="background-image: url({{ asset('img/plus.png') }});"></i> Register a Client</a>
             </div>
             @if($clients->count())
-                <table class="table-auto w-full border border-red-800">
-                    <thead>
-                    <tr class="border-bottom-1">
-                        <th>Client Name</th>
-                        <th>Client Surname</th>
-                        <th>Client ID Number</th>
-                        <th>Client Email</th>
-                        <th>Client Cellphone Number</th>
-                        <th>Client Company</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    @foreach($clients as $client)
-                        <tr>
-                            <td class="p-3 border border-red-800">{{ $client->client_name }}</td>
-                            <td class="p-3 border border-red-800">{{ $client->client_surname }}</td>
-                            <td class="p-3 border border-red-800">{{ $client->client_id_number }}</td>
-                            <td class="p-3 border border-red-800">{{ $client->client_email }}</td>
-                            <td class="p-3 border border-red-800">{{ $client->client_cellphone }}</td>
-                            <td class="p-3 border border-red-800">@foreach($client->companies as $company) @if($client->id == $company->client_id)
-                                    <a href="{{ route('companies') }}#{{ $company->id }}">{{ $company->company_name }}</a>
-                                <br> @else no company @endif @endforeach</td>
+                <div class="rounded bg-primary-fade p-5 mt-3">
+                    <table class="table-auto w-full border border-red-800">
+                        <thead>
+                        <tr class="border-bottom-1 text-left">
+                            <th class="p-3 border border-red-800">Client Name</th>
+                            <th class="p-3 border border-red-800">Client Surname</th>
+                            <th class="p-3 border border-red-800">Client ID Number</th>
+                            <th class="p-3 border border-red-800">Client Email</th>
+                            <th class="p-3 border border-red-800">Client Cellphone Number</th>
+                            <th class="p-3 border border-red-800">Client Company</th>
                         </tr>
-                    @endforeach
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                        @foreach($clients as $client)
+                            <tr>
+                                <td class="p-3 border border-red-800">{{ $client->client_name }}</td>
+                                <td class="p-3 border border-red-800">{{ $client->client_surname }}</td>
+                                <td class="p-3 border border-red-800">{{ $client->client_id_number }}</td>
+                                <td class="p-3 border border-red-800">{{ $client->client_email }}</td>
+                                <td class="p-3 border border-red-800">{{ $client->client_cellphone }}</td>
+                                <td class="p-3 border border-red-800">@foreach($client->companies as $company) @if($client->id == $company->client_id)
+                                        <a href="{{ route('companies') }}#{{ $company->id }}">{{ $company->company_name }}</a>
+                                    <br> @else no company @endif @endforeach</td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
+                </div>
             @else
                 no clients
             @endif

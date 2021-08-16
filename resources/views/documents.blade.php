@@ -10,9 +10,19 @@
                 @csrf
                 <div class="w-3/12 p-3">
                     <input class="bg-gray-100 border-2 w-full p-4 rounded-lg" type="text" name="doc_name" placeholder="Document Name">
+                    @error('doc_name')
+                    <div class="text-red-500 text-sm mt-2">
+                        {{ $message }}
+                    </div>
+                    @enderror
                 </div>
                 <div class="w-3/12 p-3">
                     <input class="bg-gray-100 border-2 w-full p-4 rounded-lg" type="text" name="description" placeholder="Description">
+                    @error('description')
+                    <div class="text-red-500 text-sm mt-2">
+                        {{ $message }}
+                    </div>
+                    @enderror
                 </div>
                 <div class="w-3/12 p-3">
                     <input  type="file" name="file">
@@ -24,7 +34,7 @@
         </div>
         <div class="w-10/12 p-5 mx-auto bg-primary-fade rounded">
             <table class="w-full">
-                <tr>
+                <tr class="text-left">
                     <th class="p-3 border border-red-800">Document Name</th>
                     <th class="p-3 border border-red-800">Document Description</th>
                     <th class="p-3 border border-red-800">Uploaded at</th>
