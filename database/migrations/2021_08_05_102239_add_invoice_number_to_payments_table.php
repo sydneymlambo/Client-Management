@@ -14,7 +14,7 @@ class AddInvoiceNumberToPaymentsTable extends Migration
     public function up()
     {
         Schema::table('payments', function (Blueprint $table) {
-            $table->integer('invoice_number');
+            $table->string('invoice_number');
         });
     }
 

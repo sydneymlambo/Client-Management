@@ -7,7 +7,7 @@
                 <a href="#register-client" class="modal-btn btn btn-primary"><i class="icon icon-edit" style="background-image: url({{ asset('img/plus.png') }});"></i> Register a Company</a>
             </div>
             @if($companies->count())
-                <div class="rounded bg-primary-fade p-5 mt-3">
+                <div class="rounded bg-gray-300 p-5 mt-3">
                     <table class="table-auto w-full border border-red-800">
                         <thead>
                         <tr class="border-bottom-1 text-left">

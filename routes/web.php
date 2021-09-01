@@ -51,7 +51,7 @@ Route::post('/update', [CompaniesController::class, 'update']);
 
 Route::get('/profile', [UserProfileController::class, 'index'])->name('profile')->middleware('auth');
 Route::get('users/edit/{id}', [UserProfileController::class, 'edit']);
-Route::post('/update-user', [UserProfileController::class, 'update']);
+Route::post('/update/user', [UserProfileController::class, 'update']);
 Route::get('/users', [UserProfileController::class, 'view'])->name('users')->middleware('auth');
 Route::delete('/users/{user}', [UserProfileController::class, 'destroy'])->name('users.destroy');
 

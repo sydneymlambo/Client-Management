@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class UserProfileController extends Controller
@@ -45,7 +44,7 @@ class UserProfileController extends Controller
             'user_role' => $request->user_role,
         ]);
 
-        return redirect()->route('users');
+        return redirect()->back();
     }
 
     public function destroy(User $user) {

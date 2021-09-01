@@ -22,7 +22,7 @@
                                 <td class="p-3 border border-red-800">{{ $user->surname }}</td>
                                 <td class="p-3 border border-red-800">{{ $user->username }}</td>
                                 <td class="p-3 border border-red-800">{{ $user->email }}</td>
-                                <td class="p-3 border border-red-800">{{ $user->user_role }}  @if($user->user_role == 1)Admin User @else Normal User @endif</td>
+                                <td class="p-3 border border-red-800">@if($user->user_role == 1)Admin User @else Normal User @endif</td>
                                 <td class="p-3 border border-red-800">
                                     <form action="{{ route('users.destroy', $user) }}" method="post">
                                         @csrf
