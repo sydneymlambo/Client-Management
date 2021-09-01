@@ -7,29 +7,32 @@
                 <a href="#register-client" class="modal-btn btn btn-primary"><i class="icon icon-edit" style="background-image: url({{ asset('img/plus.png') }});"></i> Register a Company</a>
             </div>
             @if($companies->count())
-                <table class="table-auto w-full border border-red-800">
-                    <thead>
-                    <tr class="border-bottom-1 text-left">
-                        <th class="p-3 border border-red-800">Company Name</th>
-                        <th class="p-3 border border-red-800">Company Owner</th>
-                        <th class="p-3 border border-red-800">Company Reference</th>
-                        <th class="p-3 border border-red-800">Company Registration Number</th>
-                        <th class="p-3 border border-red-800">Company Renewal</th>
-                        <th class="p-3 border border-red-800">Days left for Renewal</th>
-                        <th class="p-3 border border-red-800">Outstanding payment</th>
-                        <th class="p-3 border border-red-800" colspan="2"> Actions</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    @foreach($companies as $company)
-                        <?php
-                        $dateDiff = date_diff($current_date, date_create($company->company_renewal));
-                        $days = str_replace("+", "",$dateDiff->format("%R%a"));
-                        ?>
-                        <x-company :company="$company" :days="$days" :dateDiff="$dateDiff" :payments="$payments" />
-                    @endforeach
-                    </tbody>
-                </table>
+                <div class="rounded bg-primary-fade p-5 mt-3">
+                    <table class="table-auto w-full border border-red-800">
+                        <thead>
+                        <tr class="border-bottom-1 text-left">
+                            <th class="p-3 border border-red-800">Company Name</th>
+                            <th class="p-3 border border-red-800">Company Owner</th>
+                            <th class="p-3 border border-red-800">Company Reference</th>
+                            <th class="p-3 border border-red-800">Company Registration Number</th>
+                            <th class="p-3 border border-red-800">Company Renewal</th>
+                            <th class="p-3 border border-red-800">Days left for Renewal</th>
+                            <th class="p-3 border border-red-800">Outstanding payment</th>
+                            <th class="p-3 border border-red-800" colspan="2"> Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @foreach($companies as $company)
+                            <?php
+                            $dateDiff = date_diff($current_date, date_create($company->company_renewal));
+                            $days = str_replace("+", "",$dateDiff->format("%R%a"));
+                            ?>
+                            <x-company :company="$company" :days="$days" :dateDiff="$dateDiff" :payments="$payments" />
+                        @endforeach
+                        </tbody>
+                    </table>
+                </div>
+
                 <div class="text-center">
                     {{ $companies->links() }}
                 </div>

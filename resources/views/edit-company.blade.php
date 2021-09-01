@@ -63,7 +63,7 @@
                     @enderror
                 </div>
                 <div class="mt-5 w-8/12 mx-auto">
-                    <button type="submit" class="btn btn-primary btn-block">Register</button>
+                    <button type="submit" class="btn btn-primary btn-block">Update</button>
                 </div>
             </form>
         </div>

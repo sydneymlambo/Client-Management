@@ -2,6 +2,11 @@
 <nav class="p-6 flex flex-wrap">
     <ul class="items-center main-nav w-full">
         <li><h2 class="mb-3">MENU</h2></li>
+        @if(auth()->user()->user_role == 1)
+            <li>
+                <i class="icon icon-user" style="background-image: url({{ asset('img/user.png') }})"></i> <span class="p-3">{{ auth()->user()->name }}</span>
+            </li>
+        @endif
         <li>
             <i class="icon icon-home" style="background-image: url({{ asset('img/home.png') }})"></i> <a class="p-3" href="/">HOME</a>
         </li>
@@ -23,12 +28,15 @@
     </ul>
 
     <ul class="items-center sec-nav w-full">
-        @if(auth()->user())
+        @if(auth()->user()->user_role == 2)
             <li>
                 <i class="icon icon-user" style="background-image: url({{ asset('img/user.png') }})"></i> <a href="{{ route('profile') }}"><span class="p-3">{{ auth()->user()->name }}</span></a>
             </li>
         @endif
         @if(auth()->user()->user_role == 1)
+            <li>
+                <i class="icon icon-user" style="background-image: url({{ asset('img/user.png') }})"></i> <a href="{{ route('users') }}"><span class="p-3">Users</span></a>
+            </li>
             <li>
                 <i class="icon icon-register" style="background-image: url({{ asset('img/register.png') }})"></i>  <a href="{{ route('register') }}"><span class="p-3">Register a user</span></a>
             </li>

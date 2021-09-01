@@ -50,6 +50,10 @@ Route::get('companies/edit/{id}', [CompaniesController::class, 'edit']);
 Route::post('/update', [CompaniesController::class, 'update']);
 
 Route::get('/profile', [UserProfileController::class, 'index'])->name('profile')->middleware('auth');
+Route::get('users/edit/{id}', [UserProfileController::class, 'edit']);
+Route::post('/update-user', [UserProfileController::class, 'update']);
+Route::get('/users', [UserProfileController::class, 'view'])->name('users')->middleware('auth');
+Route::delete('/users/{user}', [UserProfileController::class, 'destroy'])->name('users.destroy');
 
 Route::get('/payments', [PaymentsController::class, 'index'])->name('payments')->middleware('auth');
 Route::post('/payments', [PaymentsController::class, 'store']);

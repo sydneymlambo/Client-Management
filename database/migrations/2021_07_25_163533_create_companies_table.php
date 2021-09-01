@@ -19,7 +19,7 @@ class CreateCompaniesTable extends Migration
             $table->string('company_reference');
             $table->string('company_registration_number');
             $table->string('client_id');
-            $table->integer('company_renewal')->nullable();
+            $table->string('company_renewal')->nullable();
             $table->timestamps();
         });
     }
