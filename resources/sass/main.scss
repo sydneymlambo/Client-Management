@@ -181,7 +181,7 @@ table {
 
 .navigation {
   background-color: $primaryFade;
-  height: 100vh;
+  min-height: 100vh;
   position: sticky;
   top: 0;
 

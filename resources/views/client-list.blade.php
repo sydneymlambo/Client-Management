@@ -85,10 +85,23 @@
                     </div>
                     @enderror
                 </div>
-                <div class="mb-5 w-full px-2">
+                <div class="mb-5 w-6/12 px-2">
                     <label for="client_email">Client Email</label>
                     <input type="text" name="client_email" id="client_email" class="bg-gray-100 border-2 w-full p-4 rounded-lg @error('client_email') border-red-500 @enderror" value="{{ old('client_email') }}">
                     @error('client_email')
+                    <div class="text-red-500 text-sm mt-2">
+                        {{ $message }}
+                    </div>
+                    @enderror
+                </div>
+                <div class="mb-4 w-6/12 px-2">
+                    <label for="client_id">Client Type</label>
+                    <select name="client_type" id="client_type" class="bg-gray-100 border-2 w-full p-4 rounded-lg @error('client_type') border-red-500 @enderror" value="{{ old('client_type') }}" required>
+                        <option value="not specified">Not specified</option>
+                        <option value="retainer client">Retainer Client</option>
+                        <option value="cash client">Cash Client</option>
+                    </select>
+                    @error('client_id')
                     <div class="text-red-500 text-sm mt-2">
                         {{ $message }}
                     </div>

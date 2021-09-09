@@ -23,6 +23,7 @@ class ClientsController extends Controller
             'client_id_number' => 'required|max:13',
             'client_email' => 'email|max:255',
             'client_cellphone' => 'required|max:12',
+            'client_type' => 'required|max:255',
         ]);
 
         //Store
@@ -32,6 +33,7 @@ class ClientsController extends Controller
             'client_id_number' => $request->client_id_number,
             'client_email' => $request->client_email,
             'client_cellphone' => $request->client_cellphone,
+            'client_type' => $request->client_type,
         ]);
 
         return redirect()->route('clients');

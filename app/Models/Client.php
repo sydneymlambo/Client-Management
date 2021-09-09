@@ -16,6 +16,7 @@ class Client extends Model
         'client_id_number',
         'client_email',
         'client_cellphone',
+        'client_type',
     ];
 
     public function companies() {
