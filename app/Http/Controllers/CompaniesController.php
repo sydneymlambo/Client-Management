@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 class CompaniesController extends Controller
 {
     public function index() {
-        $companies = Company::with('clients')->paginate(20);
+        $companies = Company::with('clients')->get();
         $clients = Client::with('companies')->get();
         $payments = Company::with('payments')->get();
         //dd($clients->companies);

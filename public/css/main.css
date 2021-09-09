@@ -33,6 +33,10 @@ table th {
   text-align: left;
 }
 
+table.striped > tbody > tr:nth-child(odd) {
+  background-color: rgba(243, 122, 35, 0.4);
+}
+
 /* Helpers */
 .hide {
   opacity: 0;
@@ -80,13 +84,14 @@ table th {
 .modal {
   position: fixed;
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   top: 0;
   left: 0;
   transition: all 0.5s;
+  z-index: 1111;
 }
 .modal .overlay {
   background-color: rgba(0, 0, 0, 0.7);
@@ -101,13 +106,6 @@ table th {
 }
 
 /* Components */
-.btn {
-  display: inline-block;
-  padding: 10px 15px;
-  border-radius: 6px;
-  font-weight: 600;
-  transition: all 0.3s;
-}
 .btn.btn-primary {
   background-color: #ee5327;
   color: #fff;
@@ -138,9 +136,13 @@ table th {
   background-repeat: no-repeat;
   background-size: 100%;
 }
-.icon.icon-companies, .icon.icon-user, .icon.icon-register, .icon.icon-exit, .icon.icon-clients, .icon.icon-dash, .icon.icon-close, .icon.icon-home, .icon.icon-payment {
+.icon.icon-companies, .icon.icon-user, .icon.icon-register, .icon.icon-exit, .icon.icon-clients, .icon.icon-dash, .icon.icon-home, .icon.icon-payment {
   width: 30px;
   height: 30px;
+}
+.icon.icon-close {
+  width: 16px;
+  height: 16px;
 }
 .icon.icon-delete, .icon.icon-edit {
   width: 15px;
@@ -151,29 +153,55 @@ table th {
   margin-right: 10px;
 }
 
+.content-logo {
+  width: 350px;
+  margin: 15px auto;
+}
+
 .logout-btn {
   padding: 0;
   display: flex;
   align-items: center;
+  color: #000;
 }
 
-.navigation {
-  background-color: rgba(243, 122, 35, 0.8);
-  min-height: 100vh;
-  position: sticky;
-  top: 0;
+nav {
+  background-color: transparent;
 }
-.navigation a, .navigation button {
+
+.sidenav-trigger {
+  position: fixed;
+  top: 5px;
+  left: 15px;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  background-color: #ee5327;
+  display: flex;
+  color: #fff;
+  justify-content: center;
+  align-items: center;
+}
+
+.sidenav {
+  background-color: #ee5327;
+}
+.sidenav span {
+  color: #000;
+  font-weight: 700;
+}
+.sidenav > li > a, .sidenav > li button {
   font-weight: 600;
   font-size: 1.2rem;
   display: inline-block;
   text-transform: uppercase;
   transition: all 0.3s;
+  color: #000;
 }
-.navigation a:hover, .navigation button:hover {
+.sidenav > li > a:hover, .sidenav > li button:hover {
   color: #7f8c8d;
 }
-.navigation li {
+.sidenav li {
   display: flex;
   align-items: center;
   margin-bottom: 1.5rem;

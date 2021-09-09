@@ -2,116 +2,76 @@
 @section('body-id', 'dashboard')
 @section('content')
     <div class="flex flex-wrap justify-center mt-5">
-        <div class="heading w-10/12 p-5 mx-auto">
+        <div class="heading w-full p-5 mx-auto">
             <h1>DASHBOARD</h1>
         </div>
-        <div class="w-10/12 p-5 mx-auto bg-white flex flex-wrap">
+        <div class="w-full p-5 mx-auto bg-white flex flex-wrap">
             <div class="px-5 mb-5 w-full">
                 <a href="#register-client" class="modal-btn btn btn-primary"><i class="icon icon-edit" style="background-image: url({{ asset('img/plus.png') }});"></i> Set a reminder note</a>
             </div>
-            <div class="w-6/12 p-5 reminders">
+            <div class="w-full p-5 reminders flex flex-wrap">
                 <div class="p-5 w-full">
                     <h3 class="text-center">Reminders</h3>
                 </div>
                 @foreach($reminders as $reminder)
-                    @if(auth()->user()->user_role === 1)
-                        <div class="w-full bg-primary-fade p-5 rounded mb-3">
+                    @if(auth()->user()->user_role == 1)
+                        <div class="w-1/3 p-3">
+                            <div class="w-full bg-primary-fade p-5 rounded mb-3">
 
-                            <p class="mb-3">
-                                <strong>Reminder for</strong> <br>
-                                {{ $reminder->users->name }}
-                            </p>
+                                <p class="mb-3">
+                                    <strong>Reminder for</strong> <br>
+                                    {{ $reminder->users->name }}
+                                </p>
 
-                            <p class="mb-3">
-                                <strong>Subject</strong> <br>
-                                {{ $reminder->subject }}
-                            </p>
+                                <p class="mb-3">
+                                    <strong>Subject</strong> <br>
+                                    {{ $reminder->subject }}
+                                </p>
 
-                            <p class="mb-3">
-                                <strong>Note</strong> <br>
-                                {{ $reminder->note }}
-                            </p>
+                                <p class="mb-3">
+                                    <strong>Note</strong> <br>
+                                    {{ $reminder->note }}
+                                </p>
 
-                            <p>
-                                <strong>Date</strong> <br>
-                                {{ $reminder->reminder_date }}
-                            </p>
+                                <p>
+                                    <strong>Date</strong> <br>
+                                    {{ $reminder->reminder_date }}
+                                </p>
 
-                            <form class="py-4" action="{{ route('dashboard.destroy', $reminder) }}" method="post">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-delete"> <i class="icon icon-delete" style="background-image: url({{ asset('img/bin.png') }})"></i> Delete</button>
-                            </form>
+                                <form class="py-4" action="{{ route('dashboard.destroy', $reminder) }}" method="post">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-delete"> <i class="icon icon-delete" style="background-image: url({{ asset('img/bin.png') }})"></i> Delete</button>
+                                </form>
+                            </div>
                         </div>
-                    @elseif($reminder->users->username === auth()->user()->username )
-                        <div class="w-full bg-primary-fade p-5 rounded mb-3">
+                    @elseif($reminder->users->username == auth()->user()->username )
+                        <div class="w-1/3 p-3">
+                            <div class="w-full bg-primary-fade p-5 rounded mb-3">
 
-                            <p class="mb-3">
-                                <strong>Reminder for</strong> <br>
-                                {{ $reminder->users->name }}
-                            </p>
+                                <p class="mb-3">
+                                    <strong>Reminder for</strong> <br>
+                                    {{ $reminder->users->name }}
+                                </p>
 
-                            <p class="mb-3">
-                                <strong>Subject</strong> <br>
-                                {{ $reminder->subject }}
-                            </p>
+                                <p class="mb-3">
+                                    <strong>Subject</strong> <br>
+                                    {{ $reminder->subject }}
+                                </p>
 
-                            <p class="mb-3">
-                                <strong>Note</strong> <br>
-                                {{ $reminder->note }}
-                            </p>
+                                <p class="mb-3">
+                                    <strong>Note</strong> <br>
+                                    {{ $reminder->note }}
+                                </p>
 
-                            <p>
-                                <strong>Date</strong> <br>
-                                {{ $reminder->reminder_date }}
-                            </p>
+                                <p>
+                                    <strong>Date</strong> <br>
+                                    {{ $reminder->reminder_date }}
+                                </p>
+                            </div>
                         </div>
                     @endif
                 @endforeach
-            </div>
-            <div class="w-6/12 p-5 alerts">
-                <div class="p-5 w-full">
-                    <h3 class="text-center">Company Alerts</h3>
-                </div>
-                <div class="w-full bg-primary-fade p-5 rounded mb-3">
-                    <h4 class="text-center">Companies in need of renewal</h4>
-                    <table class="w-full">
-                        <tr class="text-left">
-                            <th class="p-3 border border-red-800">Company Name</th>
-                            <th class="p-3 border border-red-800">Days Left to renew</th>
-                        </tr>
-                        @foreach($companies as $company)
-                            <?php
-                            $date_diff = date_diff($current_date, date_create($company->company_renewal));
-                            $days = str_replace("+", "",$date_diff->format("%R%a"));
-                            ?>
-
-                            @if($days < 90)
-                                <tr>
-                                    <td class="p-3 border border-red-800">{{ $company->company_name }}</td>
-                                    <td class="p-3 border border-red-800">{{ $days }}</td>
-                                </tr>
-                            @endif
-                        @endforeach
-                    </table>
-                </div>
-                <div class="w-full bg-primary-fade p-5 rounded mb-3">
-                    <h4 class="text-center">Companies with high initial balances</h4>
-                    <table class="w-full">
-                        <tr class="text-left">
-                            <th class="p-3 border border-red-800">Company Name</th>
-                            <th class="p-3 border border-red-800">Initial balance</th>
-                        </tr>
-                        @foreach($companies as $company)
-                            @if($company->initial_payment_balance > 5000)
-                            <tr>
-                                <td class="p-3 border border-red-800">{{ $company->company_name }}</td>
-                                <td class="p-3 border border-red-800">{{ $company->initial_payment_balance }}</td>
-                            </tr>
-                            @endif
-                        @endforeach
-                    </table>
-                </div>
             </div>
         </div>
     </div>

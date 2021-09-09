@@ -3,12 +3,12 @@
 <tr id="{{ $company->id }}" class="@if($days < 90 && $days > 6) warning-bg @elseif($days < 5) danger-bg @elseif($days > 356) good-bg @endif">
 
     <td class="p-3 border border-red-800"><a href="{{ route('companies.company', $company->id ) }}">{{ $company->company_name }}</a></td>
-    <td class="p-3 border border-red-800">{{ $company->clients->client_name }}</td>
-    <td class="p-3 border border-red-800">{{ $company->company_reference }}</td>
-    <td class="p-3 border border-red-800">{{ $company->company_registration_number }}</td>
-    <td class="p-3 border border-red-800">{{ $company->company_renewal }}</td>
-    <td class="p-3 border border-red-800">{{ $dateDiff->format("%R%a") }}</td>
-    <td class="p-3 border border-red-800">
+    <td class="">{{ $company->clients->client_name }}</td>
+    <td class="">{{ $company->company_reference }}</td>
+    <td class="">{{ $company->company_registration_number }}</td>
+    <td class="">{{ $company->company_renewal }}</td>
+    <td class="">{{ $dateDiff->format("%R%a") }}</td>
+    <td class="">
         @foreach($company->payments as $payment)
             <?php $init_amount = $init_amount - $payment->payment_amount; ?>
         @endforeach

@@ -6,6 +6,7 @@ $warning: #d35400;
 $good: #2ecc71;
 $primary: #ee5327;
 $primaryFade: rgba(243, 122, 35,.8);
+$primaryFader: rgba(243, 122, 35,.4);
 $dark: #2c3e50;
 $gray: #7f8c8d;
 $blue: #2980b9;
@@ -44,6 +45,10 @@ table {
     th {
         text-align: left;
     }
+}
+
+table.striped>tbody>tr:nth-child(odd) {
+  background-color: $primaryFader;
 }
 
 /* Helpers */
@@ -94,13 +99,14 @@ table {
 .modal {
   position: fixed;
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   top: 0;
   left: 0;
   transition: all .5s;
+  z-index: 1111;
 
   .overlay {
     background-color: rgba(0,0,0,.7);
@@ -118,11 +124,6 @@ table {
 
 /* Components */
 .btn {
-  display: inline-block;
-  padding: 10px 15px;
-  border-radius: 6px;
-  font-weight: 600;
-  transition: $transition;
   &.btn-primary {
     background-color: $primary;
     color: #fff;
@@ -157,9 +158,14 @@ table {
   background-repeat: no-repeat;
   background-size: 100%;
 
-  &.icon-companies, &.icon-user, &.icon-register, &.icon-exit, &.icon-clients, &.icon-dash, &.icon-close, &.icon-home, &.icon-payment {
+  &.icon-companies, &.icon-user, &.icon-register, &.icon-exit, &.icon-clients, &.icon-dash, &.icon-home, &.icon-payment {
     width: 30px;
     height: 30px;
+  }
+
+  &.icon-close {
+    width: 16px;
+    height: 16px;
   }
 
   &.icon-delete, &.icon-edit {
@@ -173,24 +179,51 @@ table {
   }
 }
 
+.content-logo {
+  width: 350px;
+  margin: 15px auto;
+}
+
 .logout-btn {
   padding: 0;
   display: flex;
   align-items: center;
+  color: #000;
 }
 
-.navigation {
-  background-color: $primaryFade;
-  min-height: 100vh;
-  position: sticky;
-  top: 0;
+nav {
+  background-color: transparent;
+}
 
-  a, button {
+.sidenav-trigger {
+  position: fixed;
+  top: 5px;
+  left: 15px;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  background-color: $primary;
+  display: flex;
+  color: #fff;
+  justify-content: center;
+  align-items: center;
+}
+
+.sidenav {
+  background-color: $primary;
+
+  span {
+    color: #000;
+    font-weight: 700;
+  }
+
+  >li>a, >li button {
     font-weight: 600;
     font-size: 1.2rem;
     display: inline-block;
     text-transform: uppercase;
     transition: $transition;
+    color: #000;
 
     &:hover {
       color: $gray;
@@ -201,6 +234,8 @@ table {
     display: flex;
     align-items: center;
     margin-bottom: 1.5rem;
+
+
   }
 }
 
@@ -236,3 +271,6 @@ table {
       margin: 0 auto;
   }
 }
+
+//TABLE
+
