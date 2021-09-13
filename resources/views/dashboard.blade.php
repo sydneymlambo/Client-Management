@@ -2,9 +2,6 @@
 @section('body-id', 'dashboard')
 @section('content')
     <div class="flex flex-wrap justify-center mt-5">
-        <div class="heading w-full p-5 mx-auto">
-            <h1>DASHBOARD</h1>
-        </div>
         <div class="w-full p-5 mx-auto bg-white flex flex-wrap">
             <div class="px-5 mb-5 w-full">
                 <a href="#register-client" class="modal-btn btn btn-primary"><i class="icon icon-edit" style="background-image: url({{ asset('img/plus.png') }});"></i> Set a reminder note</a>
@@ -33,9 +30,14 @@
                                     {{ $reminder->note }}
                                 </p>
 
-                                <p>
+                                <p class="mb-3">
                                     <strong>Date</strong> <br>
                                     {{ $reminder->reminder_date }}
+                                </p>
+
+                                <p>
+                                    <strong>Repeat</strong> <br>
+                                    {{ $reminder->reminder_type }}
                                 </p>
 
                                 <form class="py-4" action="{{ route('dashboard.destroy', $reminder) }}" method="post">
@@ -64,9 +66,14 @@
                                     {{ $reminder->note }}
                                 </p>
 
-                                <p>
+                                <p class="mb-3">
                                     <strong>Date</strong> <br>
                                     {{ $reminder->reminder_date }}
+                                </p>
+
+                                <p>
+                                    <strong>Repeat</strong> <br>
+                                    @{{ $reminder->reminder_type }}
                                 </p>
                             </div>
                         </div>
@@ -128,6 +135,21 @@
                         @endforeach
                     </select>
                     @error('email')
+                    <div class="text-red-500 text-sm mt-2">
+                        {{ $message }}
+                    </div>
+                    @enderror
+                </div>
+
+                <div class="mb-4 w-full px-2">
+                    <label for="email">Repeat Reminder</label>
+                    <select name="reminder_type" id="reminder_type" class="bg-gray-100 border-2 w-full p-4 rounded-lg @error('reminder_type') border-red-500 @enderror" value="{{ old('reminder_type') }}" required>
+                        <option selected value="Once">Once</option>
+                        <option value="Weekly">Weekly</option>
+                        <option value="Monthly">Monthly</option>
+                        <option value="Yearly">Yearly</option>
+                    </select>
+                    @error('reminder_type')
                     <div class="text-red-500 text-sm mt-2">
                         {{ $message }}
                     </div>

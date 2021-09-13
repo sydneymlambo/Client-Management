@@ -18,12 +18,15 @@ class DashboardController extends Controller
         $users = User::with('reminders')->get();
         $reminders = Reminder::with('users')->get();
 
+        $title = 'Dashboard';
+
         return view('dashboard', [
             'companies' => $companies,
             'clients' => $clients,
             'current_date' => $current_date,
             'users' => $users,
             'reminders' => $reminders,
+            'title' => $title,
         ]);
     }
 
@@ -34,6 +37,7 @@ class DashboardController extends Controller
             'note' => 'required|max:255',
             'email' => 'required|max:255',
             'reminder_date' => 'required|max:255',
+            'reminder_type' => 'max:255',
         ]);
 
         Reminder::create([
@@ -42,6 +46,7 @@ class DashboardController extends Controller
             'note' => $request->note,
             'email' => $request->email,
             'reminder_date' => $request->reminder_date,
+            'reminder_type' => $request->reminder_type,
         ]);
 
         return redirect()->route('dashboard');

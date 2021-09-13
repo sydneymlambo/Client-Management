@@ -1,9 +1,6 @@
 @extends('layouts.app')
 @section('content')
     <div class="flex flex-wrap justify-center">
-        <div class="w-8/12 bg-white p-6 text-center">
-            <h1>Register User</h1>
-        </div>
         <div class="w-8/12 bg-white p-6">
             {{--@if(auth()->user()->user_role == 1)--}}
                 <form action="{{ route('register') }}" method="post" class="flex flex-wrap">

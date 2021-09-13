@@ -3,7 +3,6 @@
 @section('content')
     <div class="flex justify-center mt-5">
         <div class="w-full p-5 mx-auto bg-white rounded">
-            <h1>USERS</h1>
             <div class="search pt-4">
                 <input id="search" type="text" class="form-control"  placeholder="Search for record......">
             </div>

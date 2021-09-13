@@ -19,6 +19,7 @@
                             <th class="">Client ID Number</th>
                             <th class="">Client Email</th>
                             <th class="">Client Cellphone Number</th>
+                            <th>Client Type</th>
                             <th class="">Client Company</th>
                         </tr>
                         </thead>
@@ -30,6 +31,7 @@
                                 <td class="">{{ $client->client_id_number }}</td>
                                 <td class="">{{ $client->client_email }}</td>
                                 <td class="">{{ $client->client_cellphone }}</td>
+                                <td>{{ $client->client_type }}</td>
                                 <td class="">@foreach($client->companies as $company) @if($client->id == $company->client_id)
                                         <a href="{{ route('companies') }}#{{ $company->id }}">{{ $company->company_name }}</a>
                                     <br> @else no company @endif @endforeach</td>
@@ -98,13 +100,13 @@
                     @enderror
                 </div>
                 <div class="mb-4 w-6/12 px-2 input-field">
-                    <select name="client_type" id="client_type" class="bg-gray-100 border-2 w-full p-4 rounded-lg @error('client_type') border-red-500 @enderror" value="{{ old('client_type') }}" required>
-                        <option value="not specified">Not specified</option>
-                        <option value="retainer client">Retainer Client</option>
-                        <option value="cash client">Cash Client</option>
+                    <select name="client_type" id="client_type" class="bg-gray-100 border-2 w-full p-4 rounded-lg @error('client_type') border-red-500 @enderror" value="not specified" required>
+                        <option selected value="not specified">Not specified</option>
+                        <option value="Membership Client">Membership Client</option>
+                        <option value="Cash Client">Cash Client</option>
                     </select>
-                    <label for="client_id">Client Type</label>
-                    @error('client_id')
+                    <label for="client_type">Client Type</label>
+                    @error('client_type')
                     <div class="text-red-500 text-sm mt-2">
                         {{ $message }}
                     </div>

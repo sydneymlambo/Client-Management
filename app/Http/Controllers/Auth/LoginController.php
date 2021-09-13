@@ -8,8 +8,11 @@ use Illuminate\Http\Request;
 class LoginController extends Controller
 {
     public function index() {
+        $title = "";
 
-        return view('auth.login');
+        return view('auth.login', [
+            'title' => $title,
+        ]);
     }
 
     public function store(Request $request) {

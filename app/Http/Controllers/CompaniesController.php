@@ -15,19 +15,23 @@ class CompaniesController extends Controller
         $payments = Company::with('payments')->get();
         //dd($clients->companies);
         $current_date = date_create(date('Y-m-d'));
+        $title = "Companies";
         return view('companies', [
             'companies' => $companies,
             'clients' => $clients,
             'current_date' => $current_date,
             'payments' => $payments,
+            'title' => $title,
         ]);
     }
 
     public function show(Company $company) {
         $current_date = date_create(date('Y-m-d'));
+        $title = $company->company_name;
         return view('company', [
             'company' => $company,
             'current_date' => $current_date,
+            'title' => $title,
         ]);
     }
 
@@ -62,10 +66,12 @@ class CompaniesController extends Controller
     }
 
     public function edit($id){
+        $title = "Update Company";
         $company = Company::where('id', $id)->first();
 
         return view('edit-company', [
             'company' => $company,
+            'title' => $title,
         ]);
     }
 

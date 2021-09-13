@@ -2,10 +2,7 @@
 @section('body-id', 'login')
 @section('content')
     <div class="w-full flex justify-center mt-10">
-        <div class="w-1/2 bg-white p-6 rounded-lg">
-            <div class="text-center pb-10">
-                <img src="{{ asset('img/logo.png') }}" alt="" class="w-full">
-            </div>
+        <div class="w-1/3 bg-white p-6 rounded-lg">
             <div class="text-center pb-10">
                 <h1>LOGIN</h1>
             </div>

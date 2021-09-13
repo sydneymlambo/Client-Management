@@ -2,9 +2,6 @@
 @section('body-id', 'document-repo')
 @section('content')
     <div class="flex flex-wrap justify-center mt-5">
-        <div class="heading w-full p-5 mx-auto">
-            <h1>Document Repository</h1>
-        </div>
         <div class="w-full p-5 mx-auto">
             <form class="flex flex-wrap items-center" action="{{ route('document-repository') }}" method="post" enctype="multipart/form-data">
                 @csrf

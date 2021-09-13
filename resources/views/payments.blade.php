@@ -2,9 +2,6 @@
 @section('body-id', 'dashboard')
 @section('content')
     <div class="flex flex-wrap justify-center mt-5">
-        <div class="heading w-full p-5 mx-auto">
-            <h1>Payments</h1>
-        </div>
         <div class="w-full p-5 mx-auto bg-white">
             <div class="mb-5">
                 <a href="#register-client" class="modal-btn waves-effect waves-light btn"><i class="icon icon-edit" style="background-image: url({{ asset('img/plus.png') }});"></i> Capture payment</a>
@@ -30,7 +27,7 @@
                         @foreach($payments as $payment)
                             <tr>
                                 <td class="">{{ $payment->invoice_number }}</td>
-                                <td class="">{{ $payment->companies->company_name }}</td>
+                                <td class="">@if($payment->companies->company_name){{ $payment->companies->company_name }} @endif</td>
                                 <td class="">{{ $payment->payment_for }}</td>
                                 <td class="">{{ $payment->payment_amount }}</td>
                                 <td class="">{{ $payment->payment_date }}</td>

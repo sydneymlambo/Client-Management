@@ -9,9 +9,11 @@ use Illuminate\Http\Request;
 class ClientsController extends Controller
 {
     public function index() {
+        $title = "Clients";
         $clients = Client::with('companies')->get();
         return view('client-list', [
             'clients' => $clients,
+            'title' => $title,
         ]);
     }
 

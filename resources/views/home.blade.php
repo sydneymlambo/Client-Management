@@ -6,7 +6,7 @@
             Dashboard
         </a>
 
-        <a href="#" class="action">
+        <a href="{{ route('register') }}" class="action">
             Register New user
         </a>
 

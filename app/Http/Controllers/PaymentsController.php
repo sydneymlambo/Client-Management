@@ -9,11 +9,13 @@ use App\Models\Company;
 class PaymentsController extends Controller
 {
     public function index() {
+        $title = "Payments";
         $companies = Company::with('payments')->get();
         $payments = Payment::with('companies')->paginate(20);
         return view('payments', [
             'payments' => $payments,
             'companies' => $companies,
+            'title' => $title,
         ]);
     }
     

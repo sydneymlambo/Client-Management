@@ -13,8 +13,11 @@ class DocumentsController extends Controller
         $data = Document::all();
         $companies = Company::get('company_name');
 
+        $title = 'Documents';
+
         return view('documents', compact('data'), [
             'companies' => $companies,
+            'title' => $title,
         ]);
     }
 

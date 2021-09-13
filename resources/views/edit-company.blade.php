@@ -2,9 +2,6 @@
 @section('body-id', 'dashboard')
 @section('content')
     <div class="flex flex-wrap justify-center mt-5">
-        <div class="heading w-10/12 p-5 mx-auto">
-            <h1>Update Company Details</h1>
-        </div>
         <div class="w-10/12 p-5 mx-auto bg-white rounded register-form">
             <form action="{{ url('/update') }}" method="post" class="mb-4 flex flex-wrap ">
                 @csrf

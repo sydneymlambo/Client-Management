@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddClientTypeToClientsTable extends Migration
+class AddReminderTypeToRemindersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddClientTypeToClientsTable extends Migration
      */
     public function up()
     {
-        Schema::table('clients', function (Blueprint $table) {
-            $table->string('client_type')->nullable();
+        Schema::table('reminders', function (Blueprint $table) {
+            $table->string('reminder_type')->nullable();
         });
     }
 
@@ -25,8 +25,8 @@ class AddClientTypeToClientsTable extends Migration
      */
     public function down()
     {
-        Schema::table('clients', function (Blueprint $table) {
-            $table->drop('client_type');
+        Schema::table('reminders', function (Blueprint $table) {
+            $table->drop('reminder_type');
         });
     }
 }

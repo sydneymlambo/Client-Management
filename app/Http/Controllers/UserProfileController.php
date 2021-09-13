@@ -8,22 +8,27 @@ use Illuminate\Http\Request;
 class UserProfileController extends Controller
 {
     public function index() {
-        return view('user.profile');
+        $title = 'Profile';
+        return view('user.profile', [
+            'title' => $title,
+        ]);
     }
 
     public function view() {
         $users = User::paginate(20);
-
+        $title = "Users";
         return view('user.users', [
             'users' => $users,
+            'title' => $title,
         ]);
     }
 
     public function edit($id) {
         $user = User::where('id', $id)->first();
-
+        $title = 'Update User';
         return view('edit-user', [
             'user' => $user,
+            'title' => $title,
         ]);
     }
 

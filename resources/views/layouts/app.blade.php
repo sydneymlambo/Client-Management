@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
@@ -16,7 +17,12 @@
     <div class="main flex w-full">
         @include('includes.navigation')
         <div class="content w-full">
-            <div class="text-center"><img class="content-logo" src="{{ asset('img/logo.png') }}" alt="" class="w-full"></div>
+            <div class="heading w-full p-5">
+                <div class="w-full p-5 mx-auto">
+                    <div class="text-center"><img class="content-logo" src="{{ asset('img/logo.png') }}" alt="" class="w-full"></div>
+                    <h1>{{ $title }}</h1>
+                </div>
+            </div>
             @yield('content')
         </div>
     </div>

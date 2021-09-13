@@ -16,6 +16,7 @@ class Reminder extends Model
         'note',
         'email',
         'reminder_date',
+        'reminder_type',
     ];
     
     public function users() {

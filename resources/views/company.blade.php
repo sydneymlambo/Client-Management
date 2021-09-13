@@ -3,9 +3,6 @@
 @section('content')
     <?php $init_amount = $company->initial_payment_balance; $paid_amount = 0; ?>
     <div class="flex flex-wrap justify-center mt-5">
-        <div class="heading w-full p-5 mx-auto">
-            <h1>{{ $company->company_name }}</h1>
-        </div>
         <div class="w-full p-5 mx-auto bg-white flex flex-wrap">
             <div class="w-6/12 mb-5">
                 <strong>Company reference number:</strong> <br>
