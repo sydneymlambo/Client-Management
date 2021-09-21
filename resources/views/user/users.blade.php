@@ -2,10 +2,7 @@
 @section('body-id', 'users')
 @section('content')
     <div class="flex justify-center mt-5">
-        <div class="w-full p-5 mx-auto bg-white rounded">
-            <div class="search pt-4">
-                <input id="search" type="text" class="form-control"  placeholder="Search for record......">
-            </div>
+        <div class="w-10/12 p-5 mx-auto bg-white rounded">
                 <div class="rounded bg-primary-fade p-5 mt-3">
                     <table class="table-auto w-full border border-red-800">
                         <thead>
@@ -18,7 +15,7 @@
                             <th class="p-3 border border-red-800" colspan="2">Actions</th>
                         </tr>
                         </thead>
-                        <tbody id="table">
+                        <tbody>
                         @foreach($users as $user)
                             <tr>
                                 <td class="p-3 border border-red-800">{{ $user->name }}</td>

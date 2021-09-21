@@ -5,21 +5,21 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Payment extends Model
+class Invoice extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         'company_id',
+        'billing_address',
         'invoice_number',
-        'initial_balance',
-        'payment_for',
-        'payment_amount',
-        'payment_date',
-        'total_amount_outstanding',
     ];
 
     public function companies() {
         return $this->belongsTo(Company::class, 'company_id');
+    }
+
+    public function services() {
+        return $this->hasMany(Service::class, 'invoice_id');
     }
 }

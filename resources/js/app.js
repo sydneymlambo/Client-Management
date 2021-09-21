@@ -36,3 +36,23 @@ $(function () {
         $('.sidenav').sidenav();
     });
 })
+
+function PrintElem(elem) {
+    Popup(jQuery(elem).html());
+}
+
+function Popup(data) {
+    var mywindow = window.open('', 'my div', 'height=1000,width=1000');
+    mywindow.document.write('<html><head><title></title>');
+    mywindow.document.write('<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">');
+    mywindow.document.write('</head><body>');
+    mywindow.document.write(data);
+    mywindow.document.write('</body></html>');
+    mywindow.document.close();
+    mywindow.print();
+}
+
+$(".print-btn").on('click', function (e) {
+    e.preventDefault();
+    PrintElem('#invoice');
+})

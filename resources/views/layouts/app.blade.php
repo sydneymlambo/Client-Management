@@ -20,7 +20,7 @@
             <div class="heading w-full p-5">
                 <div class="w-full p-5 mx-auto">
                     <div class="text-center"><img class="content-logo" src="{{ asset('img/logo.png') }}" alt="" class="w-full"></div>
-                    <h1>{{ $title }}</h1>
+                    <h1>{{ $title ?? '' }}</h1>
                 </div>
             </div>
             @yield('content')
