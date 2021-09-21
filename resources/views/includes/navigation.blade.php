@@ -27,6 +27,10 @@
             <i class="icon icon-payment" style="background-image: url({{ asset('img/payment.png') }})"></i> <a class="p-3" href="{{ route('document-repository') }}">Document Repository</a>
         </li>
 
+        <li>
+            <i class="icon icon-payment" style="background-image: url({{ asset('img/payment.png') }})"></i> <a class="p-3" href="{{ route('invoices') }}">Invoices</a>
+        </li>
+
         @if(auth()->user()->user_role == 2)
             <li>
                 <i class="icon icon-user" style="background-image: url({{ asset('img/user.png') }})"></i> <a href="{{ route('profile') }}"><span class="p-3">{{ auth()->user()->name }}</span></a>

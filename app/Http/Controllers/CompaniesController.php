@@ -94,4 +94,12 @@ class CompaniesController extends Controller
 
         return redirect()->route('companies');
     }
+
+    public function invoice(Company $company) {
+        $title = "Create Invoice";
+        return view('invoices.create', [
+            'company' => $company,
+            'title'
+        ]);
+    }
 }
