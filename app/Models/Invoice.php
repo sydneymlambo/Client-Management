@@ -13,6 +13,7 @@ class Invoice extends Model
         'company_id',
         'billing_address',
         'invoice_number',
+        'quotation_number',
     ];
 
     public function companies() {

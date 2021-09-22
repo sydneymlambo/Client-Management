@@ -53,11 +53,16 @@
         </div>
         <div class="w-6/12 mb-5">
             <div class="mb-5">
-                <strong>Invoice number</strong> <br>
-                {{ $invoice->invoice_number }}
+                @if(!empty($invoice->invoice_number))
+                    <strong>Invoice number</strong> <br>
+                    {{ $invoice->invoice_number }}
+                @elseif(!empty($invoice->quotation_number))
+                    <strong>Quotation number</strong> <br>
+                    {{ $invoice->quotation_number }}
+                @endif
             </div>
             <div class="mb-5">
-                <strong>Invoice For</strong> <br>
+                <strong>Customer</strong> <br>
                 {{ $invoice->companies->company_name }}
             </div>
         </div>

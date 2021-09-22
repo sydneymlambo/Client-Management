@@ -22,13 +22,13 @@ class InvoicesController extends Controller
     public function store(Request $request) {
         //Validate
         $this->validate($request, [
-            'invoice_number' => 'required|max:255',
             'company_id' => 'required|max:255',
             'billing_address' => 'required|max:255',
         ]);
 
         //Store
         Invoice::create([
+            'quotation_number' => $request->quotation_number,
             'invoice_number' => $request->invoice_number,
             'company_id' => $request->company_id,
             'billing_address' => $request->billing_address,

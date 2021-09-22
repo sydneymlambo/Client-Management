@@ -11,7 +11,7 @@
                             <option value="{{ $company->id }}">{{ $company->company_name }}</option>
                         @endforeach
                     </select>
-                    <label for="company_id">Invoice For</label>
+                    <label for="company_id">Customer</label>
                     @error('company_id')
                     <div class="text-red-500 text-sm mt-2">
                         {{ $message }}
@@ -19,13 +19,12 @@
                     @enderror
                 </div>
                 <div class="mb-4 w-6/12 px-2 input-field">
-                    <input type="number" name="invoice_number" id="invoice_number" class="@error('invoice_number') border-red-500 @enderror" value="{{ old('invoice_number') }}" required>
+                    <input type="number" name="invoice_number" id="invoice_number" class="@error('invoice_number') border-red-500 @enderror" value="{{ old('invoice_number') }}">
                     <label for="invoice_number">Invoice Number</label>
-                    @error('invoice_number')
-                    <div class="text-red-500 text-sm mt-2">
-                        {{ $message }}
-                    </div>
-                    @enderror
+                </div>
+                <div class="mb-4 w-6/12 px-2 input-field">
+                    <input type="number" name="quotation_number" id="quotation_number" class="@error('quotation_number') border-red-500 @enderror" value="{{ old('quotation_number') }}">
+                    <label for="quotation_number">Quotation Number</label>
                 </div>
                 <div class="mb-4 w-6/12 px-2 input-field">
                     <input type="text" name="billing_address" id="billing_address" class="bg-gray-100 border-2 w-full p-4 rounded-lg @error('billing_address') border-red-500 @enderror" value="{{ old('billing_address') }}" required>
@@ -50,7 +49,7 @@
                 <table class="striped">
                     <thead>
                     <tr class="border-bottom-1 text-left">
-                        <th>Invoice Number</th>
+                        <th>Invoice Number or Quotation Number</th>
                         <th>Invoice For</th>
                         <th>Billing Address</th>
                     </tr>
@@ -58,7 +57,7 @@
                     <tbody id="table">
                     @foreach($invoices as $invoice)
                         <tr>
-                            <td><a href="{{ route('invoices.invoice', $invoice->id ) }}">{{ $invoice->invoice_number }}</a></td>
+                            <td><a href="{{ route('invoices.invoice', $invoice->id ) }}">@if(!empty($invoice->invoice_number)){{ $invoice->invoice_number }}@elseif(!empty($invoice->quotation_number)){{ $invoice->quotation_number }}@endif</a></td>
                             <td><a href="{{ route('invoices.invoice', $invoice->id ) }}">{{ $invoice->companies->company_name }}</a></td>
                             <td>{{ $invoice->billing_address }}</td>
                         </tr>

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateInvoicesTable extends Migration
+class AddQuotationNumberToInvoicesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,8 @@ class CreateInvoicesTable extends Migration
      */
     public function up()
     {
-        Schema::create('invoices', function (Blueprint $table) {
-            $table->id();
-            $table->string('company_id');
-            $table->string('billing_address');
-            $table->string('invoice_number')->nullable();
-            $table->timestamps();
+        Schema::table('invoices', function (Blueprint $table) {
+            $table->string('quotation_number')->nullable();
         });
     }
 
@@ -29,6 +25,8 @@ class CreateInvoicesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('invoices');
+        Schema::table('invoices', function (Blueprint $table) {
+            $table->drop('quotation_number');
+        });
     }
 }

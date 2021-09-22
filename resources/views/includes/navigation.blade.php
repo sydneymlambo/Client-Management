@@ -28,7 +28,7 @@
         </li>
 
         <li>
-            <i class="icon icon-payment" style="background-image: url({{ asset('img/payment.png') }})"></i> <a class="p-3" href="{{ route('invoices') }}">Invoices</a>
+            <i class="icon icon-payment" style="background-image: url({{ asset('img/payment.png') }})"></i> <a class="p-3" href="{{ route('invoices') }}">Invoices & Quotations</a>
         </li>
 
         @if(auth()->user()->user_role == 2)
