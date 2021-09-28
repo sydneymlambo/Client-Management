@@ -18,6 +18,9 @@
             <i class="icon icon-clients" style="background-image: url({{ asset('img/crm.png') }})"></i> <a class="p-3" href="{{ route('clients') }}">Clients</a>
         </li>
         <li>
+            <i class="icon icon-clients" style="background-image: url({{ asset('img/crm.png') }})"></i> <a class="p-3" href="{{ route('clients-remarks') }}">Customer Remarks</a>
+        </li>
+        <li>
             <i class="icon icon-companies" style="background-image: url({{ asset('img/companies.png') }})"></i> <a class="p-3" href="{{ route('companies') }}">Companies</a>
         </li>
         <li>

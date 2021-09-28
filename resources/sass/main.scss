@@ -44,6 +44,10 @@ h4 {
   margin-bottom: 1rem;
 }
 
+textarea {
+  height: 150px !important;
+}
+
 table {
     th {
         text-align: left;
@@ -52,6 +56,10 @@ table {
 
 table.striped>tbody>tr:nth-child(odd) {
   background-color: $primaryFader;
+}
+
+.input-field>label {
+  left: 20px;
 }
 
 /* Helpers */
@@ -303,5 +311,15 @@ nav {
   }
 }
 
-//TABLE
+//Print
+@media print {
+    form, .btn, .heading, .sidenav-trigger, .search {
+      visibility: hidden;
+      position: absolute;
+    }
+  
+    table {
+      visibility: visible;
+  }
+}
 

@@ -13,6 +13,7 @@ use App\Http\Controllers\UserProfileController;
 use App\Http\Controllers\PaymentsController;
 use App\Http\Controllers\DocumentsController;
 use App\Http\Controllers\InvoicesController;
+use App\Http\Controllers\ClientRemarksController;
 
 /*
 |--------------------------------------------------------------------------
@@ -77,3 +78,8 @@ Route::get('/invoices', [InvoicesController::class, 'index'])->name('invoices')-
 Route::post('/invoices', [InvoicesController::class, 'store']);
 Route::get('invoices/{invoice}', [InvoicesController::class, 'show'])->name('invoices.invoice')->middleware('auth');
 Route::post('/invoices/storeservice', [InvoicesController::class, 'storeService']);
+
+//Client Remarks
+Route::get('/client-remarks', [ClientRemarksController::class, 'index'])->name('clients-remarks')->middleware('auth');
+Route::post('/client-remarks', [ClientRemarksController::class, 'store']);
+Route::delete('/client-remarks/{cutomerRemark}', [ClientRemarksController::class, 'destroy'])->name('cutomerRemark.destroy');

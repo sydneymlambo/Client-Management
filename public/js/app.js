@@ -1889,7 +1889,7 @@ function Popup(data) {
 
 $(".print-btn").on('click', function (e) {
   e.preventDefault();
-  PrintElem('#invoice');
+  window.print();
 });
 
 /***/ }),

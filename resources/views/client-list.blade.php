@@ -4,7 +4,7 @@
     <div class="flex justify-center mt-5">
         <div class="w-full p-5 mx-auto bg-white rounded">
             <div class="add-button py-4">
-                <a href="#register-client" class="modal-btn waves-effect waves-light btn"><i class="icon icon-edit" style="background-image: url({{ asset('img/plus.png') }});"></i> Register a Client</a>
+                <a href="#register-client" class="modal-btn waves-effect waves-light btn"><i class="icon icon-edit" style="background-image: url({{ asset('img/plus.png') }});"></i> Register a Client</a><a class="ml-5 btn btn-primary print-btn">Print</a>
             </div>
             <div class="search">
                 <input id="search" type="text" class="form-control"  placeholder="Search for record......">

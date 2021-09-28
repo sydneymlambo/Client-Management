@@ -29,7 +29,7 @@ class ClientsController extends Controller
         ]);
 
         //Store
-        Client::create([
+        Clien::create([
             'client_name' => $request->client_name,
             'client_surname' => $request->client_surname,
             'client_id_number' => $request->client_id_number,
