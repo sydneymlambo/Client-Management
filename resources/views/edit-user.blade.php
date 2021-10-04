@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+    @if(auth()->user()->user_role < 3)
     <div class="flex flex-wrap justify-center">
         <div class="w-8/12 bg-white p-6">
             @if(auth()->user()->user_role == 1)
@@ -43,6 +44,7 @@
                         <select name="user_role" id="user_role" class="bg-gray-100 border-2 w-full p-4 rounded-lg @error('user_role') border-red-500 @enderror" required="required">
                             <option @if($user->user_role == 1) selected @endif value="1">Administrator</option>
                             <option @if($user->user_role == 2) selected @endif value="2">Normal User</option>
+                            <option value="3">Client</option>
                         </select>
                         @error('user_role')
                         <div class="text-red-500 text-sm mt-2">
@@ -70,4 +72,7 @@
             @endif
         </div>
     </div>
+    @else
+        <p>You don't have access to this page</p>
+    @endif
 @endsection

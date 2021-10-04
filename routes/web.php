@@ -14,6 +14,7 @@ use App\Http\Controllers\PaymentsController;
 use App\Http\Controllers\DocumentsController;
 use App\Http\Controllers\InvoicesController;
 use App\Http\Controllers\ClientRemarksController;
+use App\Http\Controllers\BranchesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -55,6 +56,10 @@ Route::delete('/companies/{company}', [CompaniesController::class, 'destroy'])->
 Route::get('companies/{company}', [CompaniesController::class, 'show'])->name('companies.company')->middleware('auth');
 Route::get('companies/edit/{id}', [CompaniesController::class, 'edit'])->middleware('auth');
 Route::post('/update', [CompaniesController::class, 'update']);
+
+//BRANCHES
+Route::post('/companies/branch', [BranchesController::class, 'store']);
+Route::delete('/branches/{branch}', [BranchesController::class, 'destroy'])->name('branches.destroy');
 
 //USER
 Route::get('/profile', [UserProfileController::class, 'index'])->name('profile')->middleware('auth');

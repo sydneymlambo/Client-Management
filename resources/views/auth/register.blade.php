@@ -39,6 +39,7 @@
                         <select name="user_role" id="user_role" class="bg-gray-100 border-2 w-full p-4 rounded-lg @error('user_role') border-red-500 @enderror" value="{{ old('user_role') }}" required="required">
                             <option value="1">Administrator</option>
                             <option value="2">Normal User</option>
+                            <option value="3">Client</option>
                         </select>
                         <label for="user_role">User Role</label>
                         @error('user_role')

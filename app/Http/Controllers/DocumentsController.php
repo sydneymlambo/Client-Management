@@ -5,18 +5,17 @@ namespace App\Http\Controllers;
 use App\Models\Document;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use App\Models\Company;
+use App\Models\Client;
 
 class DocumentsController extends Controller
 {
     public function index() {
-        $data = Document::all();
-        $companies = Company::get('company_name');
+        $data = Document::with('clients')->get();
+        $clients = Client::get();
 
         $title = 'Documents';
-
         return view('documents', compact('data'), [
-            'companies' => $companies,
+            'clients' => $clients,
             'title' => $title,
         ]);
     }
@@ -29,7 +28,7 @@ class DocumentsController extends Controller
             'file' => 'required',
             'doc_name' => 'required|min:1',
             'description' => 'required|min:1',
-            'company_name' => 'required|min:1',
+            'client_id' => 'required|min:1',
         ]);
 
         $file = $request->file;
@@ -39,7 +38,7 @@ class DocumentsController extends Controller
 
         $data->doc_name = $request->doc_name;
         $data->description = $request->description;
-        $data->company_name = $request->company_name;
+        $data->client_id = $request->client_id;
 
         $data->save();
 

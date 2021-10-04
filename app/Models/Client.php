@@ -22,4 +22,8 @@ class Client extends Model
     public function companies() {
         return $this->hasMany(Company::class);
     }
+
+    public function documents() {
+        return $this->hasMany(Document::class);
+    }
 }

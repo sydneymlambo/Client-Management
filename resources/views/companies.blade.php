@@ -3,9 +3,11 @@
 @section('content')
     <div class="flex justify-center mt-5">
         <div class="w-full p-5 mx-auto bg-white rounded">
-            <div class="add-button py-4">
-                <a href="#register-client" class="modal-btn waves-effect waves-light btn"><i class="icon icon-edit" style="background-image: url({{ asset('img/plus.png') }});"></i> Register a Company</a><a class="ml-5 btn btn-primary print-btn">Print</a>
-            </div>
+            @if(auth()->user()->user_role < 3)
+                <div class="add-button py-4">
+                    <a href="#register-client" class="modal-btn waves-effect waves-light btn"><i class="icon icon-edit" style="background-image: url({{ asset('img/plus.png') }});"></i> Register a Company</a><a class="ml-5 btn btn-primary print-btn">Print</a>
+                </div>
+            @endif
             <div class="search">
                 <input id="search" type="text" class="form-control"  placeholder="Search for record......">
             </div>
@@ -44,7 +46,7 @@
             @endif
         </div>
     </div>
-
+@if(auth()->user()->user_role < 3)
     <div class="flex justify-center register-modal hide modal">
         <div class="overlay"></div>
         <div class="w-10/12 p-5 mx-auto bg-white rounded register-form">
@@ -119,4 +121,5 @@
             </form>
         </div>
     </div>
+@endif
 @endsection

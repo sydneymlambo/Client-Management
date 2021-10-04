@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('body-id', 'view-invoice')
 @section('content')
+    @if(auth()->user()->user_role < 3)
 <div class="flex flex-wrap justify-center mt-5">
     <div class="w-full p-5 mx-auto bg-white flex flex-wrap">
         <div class="py-5">
@@ -116,4 +117,7 @@
         </div>
     </div>
 </div>
+    @else
+        <p>You don't have access to this page</p>
+    @endif
 @endsection

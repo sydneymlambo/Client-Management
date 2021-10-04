@@ -22,10 +22,13 @@
                     @enderror
                 </div>
                 <div class="w-1/4 p-3">
-                    <select name="company_name" id="company_name" class="@error('company_name') border-red-500 @enderror" value="{{ old('company_name') }}" required>
-                        <option value="mpumalanga business finder">Mpumalanga Business Finder</option>
-                        @foreach($companies as $company)
-                            <option value="{{ $company->company_name }}">{{ $company->company_name }}</option>
+                    <select name="client_id" id="client_id" class="@error('client_id') border-red-500 @enderror" value="{{ old('client_id') }}" required>
+                        @foreach($clients as $client)
+                            @if(auth()->user()->user_role < 3 )
+                                <option value="{{ $client->id }}">{{ $client->client_name }}</option>
+                            @elseif(auth()->user()->email == $client->client_email)
+                                <option value="{{ $client->id }}">{{ $client->client_name }}</option>
+                            @endif
                         @endforeach
                     </select>
                     <label for="client_id">Document Owner</label>
@@ -43,11 +46,11 @@
                 </div>
             </form>
         </div>
-        @if(auth()->user()->user_role == 1)
         <div class="w-full p-5 mx-auto">
             <div class="search pt-5">
                 <input id="search" type="text" class="form-control"  placeholder="Search for Documents......">
             </div>
+            @if(auth()->user()->user_role == 1)
             <table class="w-full striped">
                 <thead>
                     <tr class="text-left">
@@ -62,7 +65,7 @@
                     @foreach($data as $data)
                         <tr>
                             <td class="">{{ $data->doc_name }}</td>
-                            <td>{{ $data->company_name }}</td>
+                            <td>@if(!empty($data->clients->client_name)){{ $data->clients->client_name }}@endif</td>
                             <td class="">{{ $data->description }}</td>
                             <td class="">{{ $data->created_at }}</td>
                             <td class=""><a href="{{ url('/download', $data->file) }}" class="btn btn-primary btn-block text-center">Download</a></td>
@@ -70,9 +73,34 @@
                     @endforeach
                 </tbody>
             </table>
+            @elseif(auth()->user()->user_role == 3)
+                <table class="w-full striped">
+                    <thead>
+                        <tr class="text-left">
+                            <th class="">Document Name</th>
+                            <th>Document Owner</th>
+                            <th class="">Document Description</th>
+                            <th class="">Uploaded at</th>
+                            <th class="">Download</th>
+                        </tr>
+                    </thead>
+                    <tbody id="table">
+                    @foreach($data as $data)
+                        @if(auth()->user()->email == $data->clients->client_email )
+                            <tr>
+                                <td class="">{{ $data->doc_name }}</td>
+                                <td>{{ $data->clients->client_name }}</td>
+                                <td class="">{{ $data->description }}</td>
+                                <td class="">{{ $data->created_at }}</td>
+                                <td class=""><a href="{{ url('/download', $data->file) }}" class="btn btn-primary btn-block text-center">Download</a></td>
+                            </tr>
+                        @endif
+                    @endforeach
+                    </tbody>
+                </table>
+            @else
+                <p class="text-red-800 text-bold">You currently do not have permissions to view these records</p>
+            @endif
         </div>
-        @else
-            <p class="text-red-800 text-bold">You currently do not have permissions to view these records</p>
-        @endif
     </div>
 @endsection

@@ -30,4 +30,8 @@ class Company extends Model
     public function invoices(){
         return $this->hasMany(Invoice::class, 'company_id');
     }
+
+    public function branches() {
+        return $this->hasMany(Branch::class, 'company_id');
+    }
 }
